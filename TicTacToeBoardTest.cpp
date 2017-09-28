@@ -21,6 +21,10 @@ TEST(TicTacToeBoardTest, sanityCheck)
 }
 */
 
-TEST(TicTacToeBoardTest, )
+TEST(TicTacToeBoardTest,getWinner )
 {
+	TicTacToeBoard threeTs;
+	bool result = threeTs.getPiece(0,1);
+	ASSERT_EQ(true, result);
+
 }

@@ -19,14 +19,17 @@ TicTacToeBoard::TicTacToeBoard()
 **/
 Piece TicTacToeBoard::toggleTurn()
 {
-	if(turn = x)
+	if(turn == 'X')
 	{
 		turn = O;
 	}
 	else
 	{
-		turn = x;
+		turn = X;
 	}
+
+
+	
 }
 
 /**
@@ -46,11 +49,11 @@ Piece TicTacToeBoard::placePiece(int row, int column)
   }
   if (getPiece(row,column) == 'X' || getPiece(row,column) == 'O')
   {
-	return getPiece(row, column)
+	return getPiece(row, column);
   }
   else
   {
-	board[row, column] = turn;
+	board[row][column] = turn;
 	 toggleTurn();
 	 return getPiece(row,column);
   }
@@ -66,34 +69,43 @@ Piece TicTacToeBoard::getPiece(int row, int column)
   {
 	return Invalid;
   }
-	return board[row,column];
+	return board[row][column];
 }
 
 /**
  * Returns which Piece has won, if there is a winner, Invalid if the game
  * is not over, or Blank if the board is filled and no one has won.
 **/
+
+/* 
+BUG: The program should read the board for either a row, column or diagonal with the same 3 pieces and then return the winner. This function has a bug that when it checks the diagonal lines it is not correctly checking it, the first square that is checked is not correct. 
+*/
+
 Piece TicTacToeBoard::getWinner()
 {
-	for (int i = 0, i < BOARDSIZE; i++)
+	for (int i = 0; i < BOARDSIZE; i++)
 	{
 	
-		if (getPiece(i, 0) == getPiece(i,1) == getPiece(i,2)
+		if (getPiece(i, 0) == getPiece(i,1) && getPiece(i,0) == getPiece(i,2))
 		{
-			return getPiece();
+			return getPiece(i, 0);
 		}
-		if(getPiece(0, i) == getPiece(1,i) == getPiece(2,i)
+		else if(getPiece(0, i) == getPiece(1,i) && getPiece(0,i) == getPiece(2,i))
 		{
-			return getPiece();
+			return getPiece(0, i);
+		}
+		else
+		{
+			return Invalid;
 		}
 	}
-	if(getPiece(0,0 == getPiece(1,1) == getPiece(2,2))
+	if(getPiece(0,1) == getPiece(1,1) && getPiece(0,1) == getPiece(2,2))
 	{
-		return getPiece();
+		return getPiece(0, 1);
 	}
-	if(getPiece(2,0) == getPiece(1,1) == getPiece(0.2))
+	if(getPiece(2,0) == getPiece(1,1) && getPiece(2,0) == getPiece(0,2))
 	{
-		return getPiece();
+		return getPiece(2, 0);
 	}
 	for(int i = 0; i < BOARDSIZE; i++)
 	{
@@ -101,10 +113,10 @@ Piece TicTacToeBoard::getWinner()
 		{
 			if(getPiece(i,j) == ' ')
 			{
-				return invalid;
+				return Invalid;
 			}
 		}
 	}
-	return ' ';
+	return Blank;
 
 }
