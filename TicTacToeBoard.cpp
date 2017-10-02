@@ -57,8 +57,7 @@ Piece TicTacToeBoard::placePiece(int row, int column)
 	 toggleTurn();
 	 return getPiece(row,column);
   }
-}
-
+}0
 /**
  * Returns what piece is at the provided coordinates, or Blank if there
  * are no pieces there, or Invalid if the coordinates are out of bounds
@@ -99,7 +98,7 @@ Piece TicTacToeBoard::getWinner()
 			return Invalid;
 		}
 	}
-	if(getPiece(0,1) == getPiece(1,1) && getPiece(0,1) == getPiece(2,2))
+	if(getPiece(0,0) == getPiece(1,1) && getPiece(0,0) == getPiece(2,2))
 	{
 		return getPiece(0, 1);
 	}
