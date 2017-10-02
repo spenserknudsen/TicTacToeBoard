@@ -77,6 +77,7 @@ Piece TicTacToeBoard::getPiece(int row, int column)
 
 /* 
 BUG: The program should read the board for either a row, column or diagonal with the same 3 pieces and then return the winner. This function has a bug that when it checks the diagonal lines it is not correctly checking it, the first square that is checked is not correct. 
+BUG FIXED
 */
 
 Piece TicTacToeBoard::getWinner()
