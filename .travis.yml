@@ -1,1 +1,18 @@
+sudo: enabled
 
+language: cpp
+
+before_install:
+  - mkdir TicTacToeBoard
+  - cd TicTacToeBoard
+  - git clone https://github.com/google/googletest.git
+  - cd googletest/googletest
+  - export TICTACTOEBOARD_DIR=$(pwd)
+  - cd make
+  - make
+  - cd ../../../..
+  
+script:
+  - make clean
+  - make
+  - ./TicTacToeBoardTest
